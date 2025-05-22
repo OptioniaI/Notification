@@ -99,7 +99,7 @@ function NotificationLibrary:SendNotification(Title, Description, Duration)
             Notification.NotificationTitle.Text = Title or "Title"
             Notification.NotificationDescription.Text = Description or "Description"
 
-            local tweenInfo = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+            local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
             local tweenIn = TweenService:Create(Notification, tweenInfo, {Position = UDim2.new(0.728927195, 0, 0.816286027, 0)})
             tweenIn:Play()
 
