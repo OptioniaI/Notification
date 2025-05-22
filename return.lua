@@ -1,16 +1,14 @@
 local NotificationLibrary = {}
-local TweenService = game:GetService("TweenService")
-local CoreGui = game:GetService("CoreGui") -- Assuming no cloneref for simplicity; adjust if needed
+local TweenService = game:GetService("TweenService");
+local CoreGui = game:GetService("CoreGui");
 local library
 
 function NotificationLibrary:Load()
-    -- Create the ScreenGui and components programmatically instead of loading from an asset
     library = Instance.new("ScreenGui")
     library.Name = "MaterialisticNotification"
     library.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     library.Parent = CoreGui
 
-    -- Create the notification template
     local Holder = Instance.new("Frame")
     local NotificationTitle = Instance.new("TextLabel")
     local HolderCorner = Instance.new("UICorner")
@@ -24,7 +22,7 @@ function NotificationLibrary:Load()
     Holder.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     Holder.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Holder.BorderSizePixel = 0
-    Holder.Position = UDim2.new(1.25, 0, 0.816286027, 0) -- Start off-screen
+    Holder.Position = UDim2.new(1.25, 0, 0.816286027, 0)
     Holder.Size = UDim2.new(0.25, 0, 0.150000006, 0)
 
     NotificationTitle.Name = "NotificationTitle"
@@ -101,7 +99,7 @@ function NotificationLibrary:SendNotification(Title, Description, Duration)
             Notification.NotificationTitle.Text = Title or "Title"
             Notification.NotificationDescription.Text = Description or "Description"
 
-            local tweenInfo = TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+            local tweenInfo = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
             local tweenIn = TweenService:Create(Notification, tweenInfo, {Position = UDim2.new(0.728927195, 0, 0.816286027, 0)})
             tweenIn:Play()
 
@@ -120,7 +118,7 @@ function NotificationLibrary:SendNotification(Title, Description, Duration)
         end)
         if not success then
             warn("Error creating notification: " .. tostring(err))
-        end
+        end)
     end)
 end
 
